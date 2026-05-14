@@ -153,6 +153,7 @@ export default function Home() {
     setCarOpen(true);
     setCarInteriorOpen(false);
     setMapsOpen(false);
+    setRadioOpen(false);
     setSelectedRoute("hfc");
   }
 
@@ -160,6 +161,7 @@ export default function Home() {
     setCarOpen(false);
     setCarInteriorOpen(false);
     setMapsOpen(false);
+    setRadioOpen(false);
     setSelectedRoute("hfc");
   }
 
@@ -300,7 +302,9 @@ export default function Home() {
               <button className="interactiveRadioPulse" onClick={() => setRadioOpen(!radioOpen)}>
                 Radio
               </button>
-
+              <button className="interactiveMapPulse" onClick={() => setMapsOpen(!mapsOpen)}>
+                Maps
+              </button>
               {radioOpen && (
                 <div className="radioPopup">
                   <div className="radioHeader">
@@ -347,7 +351,8 @@ export default function Home() {
                 </div>
               )}
 
-              <div className="interactiveMapPanel">
+              {mapsOpen && (
+                <div className="interactiveMapPanel">
                 <p className="panelLabel">MAPS</p>
 
                 <div className="animatedMiniMap">
@@ -394,6 +399,7 @@ export default function Home() {
                   Go to UMich ›
                 </button>
               </div>
+              )}
             </div>
           )}
         </section>
@@ -1343,6 +1349,11 @@ export default function Home() {
           box-shadow: 0 0 18px rgba(130, 255, 130, 0.25);
           text-shadow: 0 0 10px rgba(130, 255, 130, 0.85);
           animation: pulseGreen 1.7s infinite ease-in-out;
+        }
+
+
+        .interactiveMapPulse {
+          display: none;
         }
 
         .interactiveMapPanel {
@@ -2346,239 +2357,432 @@ export default function Home() {
           color: #aaa;
         }
           /* ========================= */
-/* MOBILE VERSION */
-/* ========================= */
+        /* CLEAN IPHONE / MOBILE VERSION */
+        /* ========================= */
 
-@media (max-width: 768px) {
+        @media (max-width: 768px) {
+          :global(html),
+          :global(body) {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+            overscroll-behavior: none;
+          }
 
-  .logo {
-    top: 18px;
-    font-size: 20px;
-    letter-spacing: 5px;
-  }
+          .site,
+          .carScene,
+          .tvMode,
+          .retroScreen,
+          .pcPuzzleScreen {
+            width: 100vw;
+            height: 100svh;
+            max-height: 100svh;
+            overflow: hidden;
+            touch-action: manipulation;
+          }
 
-  .watch {
-    right: 12%;
-    top: 52%;
-    width: 72px;
-    height: 72px;
-    font-size: 14px;
-  }
+          .roomImage {
+            object-fit: cover;
+            object-position: 54% center;
+          }
 
-  .enter {
-    right: 34%;
-    top: 48%;
-    width: 82px;
-    height: 82px;
-    font-size: 16px;
-  }
+          .logo {
+            top: calc(env(safe-area-inset-top) + 20px);
+            font-size: 26px;
+            letter-spacing: 10px;
+            z-index: 15;
+          }
 
-  .carExit {
-    left: 5%;
-    top: 56%;
-    width: 90px;
-    height: 90px;
-    font-size: 28px;
-  }
+          .enter,
+          .watch,
+          .carExit {
+            z-index: 20;
+            backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.38);
+          }
 
-  .carExit span {
-    font-size: 10px;
-  }
+          .enter {
+            left: 50%;
+            right: auto;
+            top: auto;
+            bottom: calc(env(safe-area-inset-bottom) + 190px);
+            transform: translateX(-50%);
+            width: 104px;
+            height: 104px;
+            font-size: 20px;
+          }
 
-  .landingContent {
-    width: 92vw;
-    padding: 26px;
-    border-radius: 20px;
-  }
+          .watch {
+            left: auto;
+            right: 10%;
+            top: auto;
+            bottom: calc(env(safe-area-inset-bottom) + 170px);
+            transform: none;
+            width: 94px;
+            height: 94px;
+            font-size: 19px;
+          }
 
-  .landingContent h1 {
-    font-size: 62px;
-  }
+          .carExit {
+            left: 8%;
+            right: auto;
+            top: auto;
+            bottom: calc(env(safe-area-inset-bottom) + 130px);
+            transform: none;
+            width: 126px;
+            height: 126px;
+            font-size: 36px;
+          }
 
-  .landingText {
-    font-size: 14px;
-    line-height: 1.6;
-  }
+          .carExit span {
+            font-size: 13px;
+          }
 
-  .earlyAccessBox input {
-    height: 44px;
-    font-size: 15px;
-  }
+          .landingContent {
+            width: calc(100vw - 30px);
+            padding: 28px 20px;
+            border-radius: 24px;
+          }
 
-  .earlyAccessBox button {
-    height: 46px;
-    font-size: 15px;
-  }
+          .landingContent h1 {
+            font-size: 72px;
+          }
 
-  .passwordBox {
-    width: 90vw;
-    padding: 22px;
-  }
+          .landingText {
+            font-size: 15px;
+            line-height: 1.55;
+          }
 
-  .passwordBox h1 {
-    font-size: 24px;
-  }
+          .earlyAccessBox input,
+          .earlyAccessBox button {
+            height: 48px;
+          }
 
-  .oldTvShell {
-    width: 94vw;
-    height: 62vh;
-    padding: 18px;
-    border-radius: 22px;
-  }
+          .blueScreen,
+          .miniNetflix,
+          .retroScreen {
+            min-height: 100svh;
+          }
 
-  .tvApp {
-    width: 160px;
-    height: 120px;
-    font-size: 18px;
-  }
+          .movieBackRoom,
+          .movieMenuButton,
+          .tvBack,
+          .puzzleBack,
+          .glassBackRoom,
+          .carInteriorBack,
+          .carBack {
+            top: calc(env(safe-area-inset-top) + 14px);
+            padding: 10px 16px;
+            font-size: 14px;
+            border-radius: 999px;
+            z-index: 100;
+          }
 
-  .miniTop {
-    padding: 18px;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
+          .miniTop {
+            height: 80px;
+            padding: calc(env(safe-area-inset-top) + 10px) 18px 0;
+          }
 
-  .heroMovie {
-    padding: 26px 20px;
-  }
+          .miniLogo {
+            display: none;
+          }
 
-  .heroMovie h1 {
-    font-size: 48px;
-  }
+          .movieMenuButton {
+            right: 16px;
+          }
 
-  .movieDesc {
-    width: 100%;
-    font-size: 14px;
-  }
+          .heroMovie {
+            min-height: 58svh;
+            padding: calc(env(safe-area-inset-top) + 120px) 24px 42px;
+          }
 
-  .mainWindow {
-    width: 92vw;
-    height: 56vh;
-    top: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-    right: auto;
-  }
+          .heroMovie h1 {
+            font-size: 66px;
+            letter-spacing: 0.04em;
+          }
 
-  .folderWindow {
-    width: 90vw;
-    height: 52vh;
-  }
+          .heroMovie h2 {
+            font-size: 44px;
+          }
 
-  .desktopIcons {
-    gap: 14px;
-    top: 18px;
-    left: 14px;
-  }
+          .movieDesc {
+            width: 100%;
+            max-width: 100%;
+            font-size: 17px;
+            line-height: 1.55;
+          }
 
-  .desktopIcon {
-    width: 62px;
-    font-size: 11px;
-  }
+          .comingSoon {
+            width: 180px;
+            height: 58px;
+            font-size: 18px;
+          }
 
-  .iconBox {
-    width: 34px;
-    height: 34px;
-    font-size: 24px;
-  }
+          .movieRow {
+            padding: 28px 24px 130px;
+          }
 
-  .startMenu {
-    width: 240px;
-    height: 240px;
-  }
+          .movieRow h3 {
+            font-size: 36px;
+          }
 
-  .taskbar {
-    height: 42px;
-  }
+          .movieCard {
+            width: 100%;
+            max-width: 360px;
+          }
 
-  .startButton {
-    width: 64px;
-  }
+          .poster {
+            width: 100%;
+            height: 150px;
+          }
 
-  .clock {
-    min-width: 70px;
-    font-size: 11px;
-  }
+          .retroScreen {
+            overflow: hidden;
+          }
 
-  .interactiveRadioPulse {
-    width: 120px;
-    height: 60px;
-    left: 4%;
-    bottom: 12%;
-    font-size: 16px;
-  }
+          .mainWindow {
+            width: calc(100vw - 26px);
+            height: 46svh;
+            left: 13px;
+            right: auto;
+            top: calc(env(safe-area-inset-top) + 64px);
+            transform: none;
+            box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.28);
+          }
 
-  .radioPopup {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 92vw;
-    bottom: 100px;
-    padding: 16px;
-  }
+          .desktopIcons {
+            display: none;
+          }
 
-  .radioStation h1 {
-    font-size: 54px;
-  }
+          .windowBody {
+            padding: 20px 12px;
+          }
 
-  .songButtons {
-    grid-template-columns: 1fr;
-  }
+          .driveGrid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
 
-  .interactiveMapPanel {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 92vw;
-    bottom: 90px;
-    min-height: 210px;
-    padding: 14px;
-  }
+          .folderIcon {
+            font-size: 38px;
+          }
 
-  .animatedMiniMap {
-    position: relative;
-    top: auto;
-    right: auto;
-    width: 100%;
-    height: 120px;
-    margin-bottom: 14px;
-  }
+          .startMenu {
+            width: 72vw;
+            height: 250px;
+            bottom: 44px;
+          }
 
-  .routeChoice {
-    width: 100%;
-    height: 50px;
-    font-size: 14px;
-  }
+          .startItems button {
+            font-size: 14px;
+            padding: 6px 10px;
+          }
 
-  .glassBackRoom,
-  .carInteriorBack,
-  .carBack,
-  .tvBack,
-  .puzzleBack {
-    top: 12px;
-    padding: 9px 14px;
-    font-size: 12px;
-  }
+          .taskbar {
+            height: 44px;
+            padding-bottom: env(safe-area-inset-bottom);
+          }
 
-  .enterCarHotspot {
-    width: 90px;
-    height: 90px;
-    font-size: 14px;
-  }
+          .startButton {
+            width: 72px;
+          }
 
-  .mazeBoard {
-    width: 82vw;
-  }
+          .taskButton {
+            min-width: 130px;
+          }
 
-  .puzzleControls button {
-    width: 48px;
-    height: 40px;
-  }
+          .clock {
+            min-width: 74px;
+            font-size: 12px;
+          }
 
-  .carInteriorImage,
-  .carImage,
-  .roomImage {
-    object-position: center;
-  }
-}
+          .folderWindow {
+            width: calc(100vw - 28px);
+            height: 42svh;
+            left: 14px;
+            top: 30svh;
+            transform: none;
+          }
+
+          .carImage,
+          .carInteriorImage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+
+          .carInteriorShade {
+            background:
+              linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.45)),
+              radial-gradient(circle at 50% 50%, rgba(0,0,0,0), rgba(0,0,0,0.22));
+          }
+
+          .enterCarHotspot {
+            width: 112px;
+            height: 112px;
+            font-size: 16px;
+          }
+
+          .interactiveRadioPulse,
+          .interactiveMapPulse {
+            display: grid !important;
+            place-items: center;
+            position: fixed;
+            top: auto;
+            bottom: calc(env(safe-area-inset-bottom) + 24px);
+            width: calc(50vw - 26px);
+            height: 64px;
+            border-radius: 18px;
+            border: 1px solid rgba(130, 255, 130, 0.85);
+            background:
+              repeating-linear-gradient(to bottom, rgba(130,255,130,0.05) 0 1px, transparent 1px 4px),
+              rgba(0, 30, 0, 0.74);
+            color: #8cff8c;
+            font-family: "Courier New", monospace;
+            font-size: 20px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 0 24px rgba(130, 255, 130, 0.32);
+            text-shadow: 0 0 10px rgba(130, 255, 130, 0.9);
+            z-index: 70;
+            animation: none;
+          }
+
+          .interactiveRadioPulse {
+            left: 16px;
+          }
+
+          .interactiveMapPulse {
+            right: 16px;
+          }
+
+          .radioPopup,
+          .interactiveMapPanel {
+            position: fixed;
+            left: 16px;
+            right: 16px;
+            top: auto;
+            bottom: calc(env(safe-area-inset-bottom) + 102px);
+            width: auto;
+            max-width: none;
+            transform: none;
+            z-index: 85;
+            border-radius: 22px;
+            padding: 18px;
+            max-height: calc(100svh - 190px);
+            overflow: auto;
+          }
+
+          .radioPopup {
+            bottom: calc(env(safe-area-inset-bottom) + 102px);
+          }
+
+          .radioStation h1 {
+            font-size: 68px;
+          }
+
+          .radioVisualizer {
+            height: 56px;
+            margin: 14px 0;
+          }
+
+          .songButtons {
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+          }
+
+          .songChoice {
+            height: 46px;
+            font-size: 15px;
+          }
+
+          .interactiveMapPanel {
+            min-height: 0;
+          }
+
+          .panelLabel {
+            font-size: 22px;
+            margin-bottom: 14px;
+          }
+
+          .animatedMiniMap {
+            position: relative;
+            top: auto;
+            right: auto;
+            left: auto;
+            width: 100%;
+            height: 210px;
+            margin: 0 0 18px;
+            border-radius: 18px;
+          }
+
+          .routeChoice {
+            width: 100%;
+            height: 62px;
+            margin: 12px 0;
+            border-radius: 14px;
+            font-size: 18px;
+            padding: 0 22px;
+          }
+
+          .routeLineSolid {
+            stroke-width: 7;
+          }
+
+          .movingDot {
+            fill: #ffffff;
+          }
+
+          .routeDotGlow {
+            r: 7;
+          }
+
+          .oldTvShell {
+            width: calc(100vw - 30px);
+            height: 58svh;
+            padding: 18px;
+            border-radius: 24px;
+          }
+
+          .tvApp {
+            width: 170px;
+            height: 126px;
+            font-size: 19px;
+          }
+
+          .passwordBox {
+            width: calc(100vw - 32px);
+            padding: 22px;
+          }
+
+          .passwordBox h1 {
+            font-size: 24px;
+          }
+
+          .passwordBox small {
+            font-size: 11px;
+            line-height: 1.45;
+          }
+
+          .puzzleCard {
+            width: calc(100vw - 28px);
+            max-height: calc(100svh - 90px);
+            padding: 22px 16px;
+          }
+
+          .mazeBoard {
+            width: min(320px, 78vw);
+          }
+
+          .puzzleControls button {
+            width: 54px;
+            height: 44px;
+          }
+        }
+
       `}</style>
     </main>
   );
