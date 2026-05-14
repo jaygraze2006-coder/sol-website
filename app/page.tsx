@@ -1377,7 +1377,7 @@ export default function Home() {
           position: absolute;
           left: 50%;
           transform: translateX(-50%);
-          bottom: 6%;
+          bottom: 14%;
           z-index: 41;
           width: 420px;
           min-height: 230px;
