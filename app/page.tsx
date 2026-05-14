@@ -2356,212 +2356,433 @@ export default function Home() {
         .movieCard small {
           color: #aaa;
         }
-        /* ===================================== */
-/* FINAL TRUE MOBILE FIX */
-/* ===================================== */
+          /* ========================= */
+        /* CLEAN IPHONE / MOBILE VERSION */
+        /* ========================= */
 
-@media screen and (max-width: 768px) {
+        @media (max-width: 768px) {
+          :global(html),
+          :global(body) {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+            overscroll-behavior: none;
+          }
 
-  html,
-  body,
-  .site {
-    overflow-x: hidden !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-  }
+          .site,
+          .carScene,
+          .tvMode,
+          .retroScreen,
+          .pcPuzzleScreen {
+            width: 100vw;
+            height: 100svh;
+            max-height: 100svh;
+            overflow: hidden;
+            touch-action: manipulation;
+          }
 
-  .logo {
-    top: 20px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    font-size: 20px !important;
-    letter-spacing: 8px !important;
-    z-index: 100;
-  }
+          .roomImage {
+            object-fit: cover;
+            object-position: 54% center;
+          }
 
-  /* ROOM */
+          .logo {
+            top: calc(env(safe-area-inset-top) + 20px);
+            font-size: 26px;
+            letter-spacing: 10px;
+            z-index: 15;
+          }
 
-  .watch,
-  .enter,
-  .carExit {
-    width: 92px !important;
-    height: 92px !important;
-    font-size: 18px !important;
-    border-width: 3px !important;
-  }
+          .enter,
+          .watch,
+          .carExit {
+            z-index: 20;
+            backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.38);
+          }
 
-  .watch {
-    right: 6% !important;
-    top: 58% !important;
-  }
+          .enter {
+            left: 50%;
+            right: auto;
+            top: auto;
+            bottom: calc(env(safe-area-inset-bottom) + 190px);
+            transform: translateX(-50%);
+            width: 104px;
+            height: 104px;
+            font-size: 20px;
+          }
 
-  .enter {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    top: 55% !important;
-  }
+          .watch {
+            left: auto;
+            right: 10%;
+            top: auto;
+            bottom: calc(env(safe-area-inset-bottom) + 170px);
+            transform: none;
+            width: 94px;
+            height: 94px;
+            font-size: 19px;
+          }
 
-  .carExit {
-    left: 6% !important;
-    top: 63% !important;
-  }
+          .carExit {
+            left: 8%;
+            right: auto;
+            top: auto;
+            bottom: calc(env(safe-area-inset-bottom) + 130px);
+            transform: none;
+            width: 126px;
+            height: 126px;
+            font-size: 36px;
+          }
 
-  .carExit span {
-    font-size: 12px !important;
-  }
+          .carExit span {
+            font-size: 13px;
+          }
 
-  /* CAR */
+          .landingContent {
+            width: calc(100vw - 30px);
+            padding: 28px 20px;
+            border-radius: 24px;
+          }
 
-  .interactiveMapPanel {
-    width: 92vw !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    bottom: 16px !important;
-    padding: 16px !important;
-    min-height: auto !important;
-  }
+          .landingContent h1 {
+            font-size: 72px;
+          }
 
-  .animatedMiniMap {
-    position: relative !important;
-    width: 100% !important;
-    height: 170px !important;
-    top: auto !important;
-    right: auto !important;
-    margin-bottom: 18px !important;
-  }
+          .landingText {
+            font-size: 15px;
+            line-height: 1.55;
+          }
 
-  .routeChoice {
-    width: 100% !important;
-    height: 64px !important;
-    font-size: 18px !important;
-  }
+          .earlyAccessBox input,
+          .earlyAccessBox button {
+            height: 48px;
+          }
 
-  .interactiveRadioPulse {
-    width: 120px !important;
-    height: 62px !important;
-    font-size: 16px !important;
-    left: 5% !important;
-    bottom: 8% !important;
-  }
+          .blueScreen,
+          .miniNetflix,
+          .retroScreen {
+            min-height: 100svh;
+          }
 
-  .radioPopup {
-    width: 92vw !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    bottom: 14% !important;
-  }
+          .movieBackRoom,
+          .movieMenuButton,
+          .tvBack,
+          .puzzleBack,
+          .glassBackRoom,
+          .carInteriorBack,
+          .carBack {
+            top: calc(env(safe-area-inset-top) + 14px);
+            padding: 10px 16px;
+            font-size: 14px;
+            border-radius: 999px;
+            z-index: 100;
+          }
 
-  .glassBackRoom,
-  .carInteriorBack,
-  .carBack {
-    top: 18px !important;
-    padding: 10px 16px !important;
-    font-size: 14px !important;
-  }
+          .miniTop {
+            height: 80px;
+            padding: calc(env(safe-area-inset-top) + 10px) 18px 0;
+          }
 
-  /* MOVIES */
+          .miniLogo {
+            display: none;
+          }
 
-  .miniTop {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 14px !important;
-    align-items: center !important;
-    padding-top: 24px !important;
-  }
+          .movieMenuButton {
+            right: 16px;
+          }
 
-  .miniLogo {
-    font-size: 48px !important;
-    text-align: center !important;
-    line-height: .9 !important;
-  }
+          .heroMovie {
+            min-height: 58svh;
+            padding: calc(env(safe-area-inset-top) + 120px) 24px 42px;
+          }
 
-  .heroMovie {
-    padding: 40px 22px !important;
-  }
+          .heroMovie h1 {
+            font-size: 66px;
+            letter-spacing: 0.04em;
+          }
 
-  .heroMovie h1 {
-    font-size: 72px !important;
-  }
+          .heroMovie h2 {
+            font-size: 44px;
+          }
 
-  .heroMovie h2 {
-    font-size: 48px !important;
-  }
+          .movieDesc {
+            width: 100%;
+            max-width: 100%;
+            font-size: 17px;
+            line-height: 1.55;
+          }
 
-  .movieDesc {
-    width: 100% !important;
-    font-size: 20px !important;
-    line-height: 1.6 !important;
-  }
+          .comingSoon {
+            width: 180px;
+            height: 58px;
+            font-size: 18px;
+          }
 
-  .movieRow {
-    padding: 0 22px 100px !important;
-  }
+          .movieRow {
+            padding: 28px 24px 130px;
+          }
 
-  .movieCard {
-    width: 100% !important;
-  }
+          .movieRow h3 {
+            font-size: 36px;
+          }
 
-  /* DESKTOP */
+          .movieCard {
+            width: 100%;
+            max-width: 360px;
+          }
 
-  .mainWindow,
-  .folderWindow {
-    width: 96vw !important;
-    height: auto !important;
-    max-height: 78vh !important;
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
-    top: 72px !important;
-  }
+          .poster {
+            width: 100%;
+            height: 150px;
+          }
 
-  .driveGrid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
+          .retroScreen {
+            overflow: hidden;
+          }
 
-  .desktopIcons {
-    grid-template-columns: repeat(2, 1fr) !important;
-    left: 12px !important;
-    top: 12px !important;
-    gap: 14px !important;
-  }
+          .mainWindow {
+            width: calc(100vw - 26px);
+            height: 46svh;
+            left: 13px;
+            right: auto;
+            top: calc(env(safe-area-inset-top) + 64px);
+            transform: none;
+            box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.28);
+          }
 
-  .startMenu {
-    width: 240px !important;
-    height: auto !important;
-  }
+          .desktopIcons {
+            display: none;
+          }
 
-  .taskbar {
-    height: 42px !important;
-  }
+          .windowBody {
+            padding: 20px 12px;
+          }
 
-  /* TV */
+          .driveGrid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
 
-  .oldTvShell {
-    width: 96vw !important;
-    height: auto !important;
-    padding: 20px !important;
-  }
+          .folderIcon {
+            font-size: 38px;
+          }
 
-  .passwordBox {
-    width: 92vw !important;
-  }
+          .startMenu {
+            width: 72vw;
+            height: 250px;
+            bottom: 44px;
+          }
 
-  .tvApp {
-    width: 180px !important;
-    height: 130px !important;
-  }
+          .startItems button {
+            font-size: 14px;
+            padding: 6px 10px;
+          }
 
-  /* GENERAL */
+          .taskbar {
+            height: 44px;
+            padding-bottom: env(safe-area-inset-bottom);
+          }
 
-  * {
-    box-sizing: border-box !important;
-    max-width: 100vw !important;
-  }
+          .startButton {
+            width: 72px;
+          }
 
-  img {
-    max-width: 100% !important;
-  }
-}
+          .taskButton {
+            min-width: 130px;
+          }
+
+          .clock {
+            min-width: 74px;
+            font-size: 12px;
+          }
+
+          .folderWindow {
+            width: calc(100vw - 28px);
+            height: 42svh;
+            left: 14px;
+            top: 30svh;
+            transform: none;
+          }
+
+          .carImage,
+          .carInteriorImage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+
+          .carInteriorShade {
+            background:
+              linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.45)),
+              radial-gradient(circle at 50% 50%, rgba(0,0,0,0), rgba(0,0,0,0.22));
+          }
+
+          .enterCarHotspot {
+            width: 112px;
+            height: 112px;
+            font-size: 16px;
+          }
+
+          .interactiveRadioPulse,
+          .interactiveMapPulse {
+            display: grid !important;
+            place-items: center;
+            position: fixed;
+            top: auto;
+            bottom: calc(env(safe-area-inset-bottom) + 24px);
+            width: calc(50vw - 26px);
+            height: 64px;
+            border-radius: 18px;
+            border: 1px solid rgba(130, 255, 130, 0.85);
+            background:
+              repeating-linear-gradient(to bottom, rgba(130,255,130,0.05) 0 1px, transparent 1px 4px),
+              rgba(0, 30, 0, 0.74);
+            color: #8cff8c;
+            font-family: "Courier New", monospace;
+            font-size: 20px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 0 24px rgba(130, 255, 130, 0.32);
+            text-shadow: 0 0 10px rgba(130, 255, 130, 0.9);
+            z-index: 70;
+            animation: none;
+          }
+
+          .interactiveRadioPulse {
+            left: 16px;
+          }
+
+          .interactiveMapPulse {
+            right: 16px;
+          }
+
+          .radioPopup,
+          .interactiveMapPanel {
+            position: fixed;
+            left: 16px;
+            right: 16px;
+            top: auto;
+            bottom: calc(env(safe-area-inset-bottom) + 102px);
+            width: auto;
+            max-width: none;
+            transform: none;
+            z-index: 85;
+            border-radius: 22px;
+            padding: 18px;
+            max-height: calc(100svh - 190px);
+            overflow: auto;
+          }
+
+          .radioPopup {
+            bottom: calc(env(safe-area-inset-bottom) + 102px);
+          }
+
+          .radioStation h1 {
+            font-size: 68px;
+          }
+
+          .radioVisualizer {
+            height: 56px;
+            margin: 14px 0;
+          }
+
+          .songButtons {
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+          }
+
+          .songChoice {
+            height: 46px;
+            font-size: 15px;
+          }
+
+          .interactiveMapPanel {
+            min-height: 0;
+          }
+
+          .panelLabel {
+            font-size: 22px;
+            margin-bottom: 14px;
+          }
+
+          .animatedMiniMap {
+            position: relative;
+            top: auto;
+            right: auto;
+            left: auto;
+            width: 100%;
+            height: 210px;
+            margin: 0 0 18px;
+            border-radius: 18px;
+          }
+
+          .routeChoice {
+            width: 100%;
+            height: 62px;
+            margin: 12px 0;
+            border-radius: 14px;
+            font-size: 18px;
+            padding: 0 22px;
+          }
+
+          .routeLineSolid {
+            stroke-width: 7;
+          }
+
+          .movingDot {
+            fill: #ffffff;
+          }
+
+          .routeDotGlow {
+            r: 7;
+          }
+
+          .oldTvShell {
+            width: calc(100vw - 30px);
+            height: 58svh;
+            padding: 18px;
+            border-radius: 24px;
+          }
+
+          .tvApp {
+            width: 170px;
+            height: 126px;
+            font-size: 19px;
+          }
+
+          .passwordBox {
+            width: calc(100vw - 32px);
+            padding: 22px;
+          }
+
+          .passwordBox h1 {
+            font-size: 24px;
+          }
+
+          .passwordBox small {
+            font-size: 11px;
+            line-height: 1.45;
+          }
+
+          .puzzleCard {
+            width: calc(100vw - 28px);
+            max-height: calc(100svh - 90px);
+            padding: 22px 16px;
+          }
+
+          .mazeBoard {
+            width: min(320px, 78vw);
+          }
+
+          .puzzleControls button {
+            width: 54px;
+            height: 44px;
+          }
+        }
+
       `}</style>
     </main>
   );
