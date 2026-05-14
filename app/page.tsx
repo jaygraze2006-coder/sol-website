@@ -1353,13 +1353,30 @@ export default function Home() {
 
 
         .interactiveMapPulse {
-          display: none;
+          position: absolute;
+          right: 16.5%;
+          bottom: 34%;
+          z-index: 22;
+          width: 220px;
+          height: 74px;
+          border-radius: 12px;
+          border: 1px solid rgba(130, 255, 130, 0.78);
+          background: rgba(0, 60, 0, 0.18);
+          color: #8cff8c;
+          font-family: inherit;
+          font-size: 20px;
+          font-weight: 900;
+          cursor: pointer;
+          box-shadow: 0 0 18px rgba(130, 255, 130, 0.22);
+          text-shadow: 0 0 10px rgba(130, 255, 130, 0.85);
+          animation: pulseGreen 1.7s infinite ease-in-out;
         }
 
         .interactiveMapPanel {
           position: absolute;
-          left: 33%;
-          bottom: 5%;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 6%;
           z-index: 41;
           width: 420px;
           min-height: 230px;
@@ -1591,13 +1608,48 @@ export default function Home() {
 
         @media (max-width: 900px) {
           .interactiveMapPanel {
+            width: 90vw;
+            max-width: 420px;
             left: 50%;
             transform: translateX(-50%);
-            bottom: 5%;
+            bottom: 3%;
+            padding: 16px;
+          }
+
+          .animatedMiniMap {
+            position: relative;
+            top: auto;
+            right: auto;
+            width: 100%;
+            height: 150px;
+            margin-bottom: 18px;
+          }
+
+          .routeChoice {
+            width: 100%;
           }
 
           .interactiveRadioPulse {
-            display: none;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 8%;
+            width: 200px;
+            height: 72px;
+          }
+
+          .interactiveMapPulse {
+            right: 50%;
+            transform: translateX(50%);
+            bottom: 22%;
+            width: 200px;
+            height: 62px;
+          }
+
+          .radioPopup {
+            width: 88vw;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 18%;
           }
         }
 
