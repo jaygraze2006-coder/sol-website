@@ -1354,7 +1354,8 @@ export default function Home() {
 
         .interactiveMapPulse {
           position: absolute;
-          right: 16.5%;
+          left: 50%;
+          transform: translateX(-50%);
           bottom: 34%;
           z-index: 22;
           width: 220px;
